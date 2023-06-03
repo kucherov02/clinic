@@ -1,0 +1,52 @@
+<!-- app/views/hospitals/download_pdf.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hospitals and Patients</title>
+  <style>
+      /* Custom PDF styles go here */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f2f2f2;
+      }
+
+      h1 {
+          color: #336699;
+          text-align: center;
+      }
+
+      .hospital-card {
+          background-color: #ffffff;
+          border: 1px solid #cccccc;
+          padding: 20px;
+          margin-bottom: 20px;
+      }
+
+      .patient-card {
+          background-color: #f9f9f9;
+          border: 1px solid #cccccc;
+          padding: 10px;
+          margin-bottom: 10px;
+      }
+  </style>
+</head>
+<body>
+<h1>Hospitals and Patients</h1>
+
+<% @hospitals.each do |hospital| %>
+  <div class="hospital-card">
+    <h2><%= hospital.name %></h2>
+    <p><strong>Address:</strong> <%= hospital.address %></p>
+    <p><strong>Creation Date:</strong> <%= hospital.creation_date %></p>
+
+    <% hospital.patients.each do |patient| %>
+      <div class="patient-card">
+        <h3><%= patient.full_name %></h3>
+        <p><strong>Date of Birth:</strong> <%= patient.date_of_birth %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+</body>
+</html>

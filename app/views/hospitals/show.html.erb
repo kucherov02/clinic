@@ -1,0 +1,54 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @hospital %>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID
+      <%= link_to 'ASC', hospital_path(@hospital, sort: 'id', direction: 'asc') %>
+      <%= link_to 'DESC', hospital_path(@hospital, sort: 'id', direction: 'desc') %>
+    </th>
+    <th>Patient Name
+      <%= link_to 'ASC', hospital_path(@hospital, sort: 'full_name', direction: 'asc') %>
+      <%= link_to 'DESC', hospital_path(@hospital, sort: 'full_name', direction: 'desc') %>
+    </th>
+    <th>Patient Age
+      <%= link_to 'ASC', hospital_path(@hospital, sort: 'age', direction: 'asc') %>
+      <%= link_to 'DESC', hospital_path(@hospital, sort: 'age', direction: 'desc') %>
+    </th>
+    <th>Card Number
+      <%= link_to 'ASC', hospital_path(@hospital, sort: 'card_number', direction: 'asc') %>
+      <%= link_to 'DESC', hospital_path(@hospital, sort: 'card_number', direction: 'desc') %>
+    </th>
+    <th>Doctor</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @patients.each do |patient| %>
+    <tr>
+      <td><%= patient.id %></td>
+      <td><%= patient.full_name %></td>
+      <td><%= ((Date.today - patient.date_of_birth) / 365.25).to_i %></td> <!-- calculated age -->
+      <td><%= patient.patient_card.card_number %></td>
+      <td>
+        <% patient.doctor_patients.each do |dp| %>
+          <%= link_to dp.doctor.full_name, doctor_path(dp.doctor) %>
+        <% end %>
+      </td>
+      <td><%= link_to 'Show', patient, class: "btn btn-primary" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @patients %>
+
+<div>
+  <%= link_to "Edit this hospital", edit_hospital_path(@hospital) %> |
+  <%= link_to "Back to hospitals", hospitals_path %>
+
+  <%= button_to "Destroy this hospital", @hospital, method: :delete %>
+</div>

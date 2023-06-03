@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_name: MyString
+  date_of_joining: 2023-05-28
+  department: one
+
+two:
+  full_name: MyString
+  date_of_joining: 2023-05-28
+  department: two

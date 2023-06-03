@@ -1,0 +1,39 @@
+<%= form_with url: hospitals_path, method: :get, local: true do |form| %>
+  <%= form.text_field :query, placeholder: "Search Hospitals" %>
+  <%= form.submit "Search", class: "btn btn-primary" %>
+<% end %>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name
+      <%= link_to 'ASC', hospitals_path(sort: 'name', direction: 'asc') %>
+      <%= link_to 'DESC', hospitals_path(sort: 'name', direction: 'desc') %>
+    </th>
+    <th>Number of Departments
+      <%= link_to 'ASC', hospitals_path(sort: 'departments', direction: 'asc') %>
+      <%= link_to 'DESC', hospitals_path(sort: 'departments', direction: 'desc') %>
+    </th>
+    <th>Number of Doctors
+      <%= link_to 'ASC', hospitals_path(sort: 'doctors', direction: 'asc') %>
+      <%= link_to 'DESC', hospitals_path(sort: 'doctors', direction: 'desc') %>
+    </th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @hospitals.each do |hospital| %>
+    <tr>
+      <td><%= hospital.id %></td>
+      <td><%= hospital.name %></td>
+      <td><%= hospital.departments.count %></td>
+      <td><%= hospital.doctors.count %></td>
+      <td><%= link_to 'Show', hospital, class: "btn btn-primary" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @hospitals %>
