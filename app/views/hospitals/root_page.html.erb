@@ -1,12 +1,20 @@
 <!-- views/hospitals/root_page.html.erb -->
 <h1>Welcome!</h1>
-<p>This is the root page of the application.</p>
+<p m-4>A good clinic is a place where individuals can seek medical care and experience exceptional healthcare services. From the moment patients step through the doors, they are greeted with a warm and welcoming environment that puts them at ease.
 
-<%= link_to "Go to Hospitals Index", hospitals_path %>
+  One of the key qualities of a good clinic is a highly skilled and compassionate medical team. The doctors, nurses, and support staff are not only knowledgeable and experienced but also empathetic and understanding. They take the time to listen to patients' concerns, answer their questions, and provide personalized care.
 
-<h3>Admin Admin Admin!</h3>
-<a href="<%= admin_root_path %>" class="btn btn-warning">Go to admin panel</a>
+  In a good clinic, patient comfort and safety are top priorities. The facilities are clean, organized, and well-maintained, creating a conducive environment for healing. The clinic follows strict hygiene protocols and ensures that medical equipment and supplies are up to date and in optimal condition.
 
-<p>Download data:</p>
-<a href="<%= download_csv_path(format: :csv) %>" class="btn btn-primary">Download CSV</a>
-<a href="<%= download_pdf_hospitals_path(format: :pdf) %>" class="btn btn-secondary">Download PDF</a>
+  Accessibility and convenience are also essential aspects of a good clinic. It is conveniently located, easily accessible by public transportation, and offers ample parking facilities. The clinic may also have flexible scheduling options, including extended hours or urgent care services, to accommodate patients' needs and emergencies.</p>
+
+<div class="text-center">
+  <%= link_to "Go to Hospitals Index", hospitals_path, class: "btn btn-primary" %>
+  <a href="<%= download_csv_path(format: :csv) %>" class="btn btn-warning">Download CSV</a>
+  <a href="<%= download_pdf_hospitals_path(format: :pdf) %>" class="btn btn-warning">Download PDF</a>
+</div>
+
+
+
+
+
