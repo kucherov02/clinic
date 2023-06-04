@@ -28,6 +28,7 @@ class HospitalsController < ApplicationController
 
     respond_to do |format|
       format.csv do
+
         csv_data = Hospital.to_csv
         send_data csv_data, filename: 'hospitals_and_patients.csv', type: 'text/csv'
       end
@@ -103,6 +104,7 @@ class HospitalsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hospital
+
       @hospital = Hospital.find(params[:id])
     end
 

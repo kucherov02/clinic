@@ -19,6 +19,7 @@ class Hospital < ApplicationRecord
     csv_text = File.read('app/assets/csv/hospitals.csv')
     csv = CSV.parse(csv_text, headers: true)
 
+
     threads = []
     mutex = Mutex.new
 
@@ -37,6 +38,7 @@ class Hospital < ApplicationRecord
       end
     end
 
+
     threads.each(&:join)
   end
 
@@ -45,6 +47,7 @@ class Hospital < ApplicationRecord
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
+
 
       all.left_outer_joins(doctors: :patients)
          .select('hospitals.name, hospitals.address, hospitals.creation_date, hospitals.facility_type, hospitals.city, hospitals.mortality, patients.full_name AS patient_name, patients.date_of_birth AS patient_date_of_birth')
