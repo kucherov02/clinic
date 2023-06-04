@@ -1,9 +1,10 @@
-<%= form_with url: hospitals_path, method: :get, local: true do |form| %>
-  <%= form.text_field :query, placeholder: "Search Hospitals" %>
-  <%= form.submit "Search", class: "btn btn-primary" %>
-<% end %>
-
-<table class="table">
+<div class="mb-4">
+  <%= form_with url: hospitals_path, method: :get, local: true do |form| %>
+    <%= form.text_field :query, placeholder: "Search Hospitals", class:"mb-2 form-control"%>
+    <%= form.submit "Search", class: "btn btn-light" %>
+  <% end %>
+</div>
+<table class="table table-dark table-striped-columns">
   <thead>
   <tr>
     <th>ID</th>
@@ -11,11 +12,11 @@
       <%= link_to 'ASC', hospitals_path(sort: 'name', direction: 'asc') %>
       <%= link_to 'DESC', hospitals_path(sort: 'name', direction: 'desc') %>
     </th>
-    <th>Number of Departments
+    <th>Departments
       <%= link_to 'ASC', hospitals_path(sort: 'departments', direction: 'asc') %>
       <%= link_to 'DESC', hospitals_path(sort: 'departments', direction: 'desc') %>
     </th>
-    <th>Number of Doctors
+    <th>Doctors
       <%= link_to 'ASC', hospitals_path(sort: 'doctors', direction: 'asc') %>
       <%= link_to 'DESC', hospitals_path(sort: 'doctors', direction: 'desc') %>
     </th>
@@ -30,10 +31,15 @@
       <td><%= hospital.name %></td>
       <td><%= hospital.departments.count %></td>
       <td><%= hospital.doctors.count %></td>
-      <td><%= link_to 'Show', hospital, class: "btn btn-primary" %></td>
+      <td><%= link_to 'Show', hospital, class: "btn" %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= paginate @hospitals %>
+<div class="text-center m-3">
+  <br>
+  <%= paginate @hospitals %>
+  <br>
+</div>
+
